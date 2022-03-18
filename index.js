@@ -1,23 +1,18 @@
 import { Cliente } from "./Cliente.js";
-
-const cliente1 = new Cliente("Maria", 123123123)
-
-
-const cliente2 = new Cliente("João", 321321321)
+import { Conta } from "./Conta.js";
+import { ContaCorrente } from "./ContaCorrente.js";
+import { ContaPoupanca } from "./ContaPoupanca.js";
 
 
-cliente1.depositar(4000)
-cliente1.sacar(1500)
+const jose = new Cliente("Ramon", 1233214)
+
+const contaCorrenteJose = new ContaCorrente(200, jose, 322332)
+const ContaPoupancaJose = new ContaPoupanca(300, jose, 322332)
 
 
-cliente1.transferir(500, cliente2)
-
-// não será posssível sobreescrever o método qu e informa o saldo, porque ele tem um set.
-// cliente1.saldo = 2050
-
-
-// perceba que para os getters em setters, não precisa underline. Apenas nas variaveis
-console.log(cliente1.saldo)
-console.log(cliente1.cpf)
+ContaPoupancaJose.sacar(100)
+contaCorrenteJose.sacar(100)
+console.log(ContaPoupancaJose)
+console.log(contaCorrenteJose)
 
 

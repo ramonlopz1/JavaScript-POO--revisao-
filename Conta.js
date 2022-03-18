@@ -1,25 +1,25 @@
+// SERÁ UMA CLASSE ABSTRATA, NÃO PODERÁ SER INSTANCIADA, APENAS HERDADA.
 export class Conta {
-    // PUBLIC VARIABLES
-    agencia;
-    
-    // PRIVATE VARIABLES
-    _cliente;
-    _saldo = 0;
-
-    // CONSTRUCTOR METHOD
-    constructor(cliente) {
-
+    // CONSTRUCTOR  METHOD
+    constructor(saldoInicial, cliente, agencia) {
+        if(this.constructor == Conta) {
+            throw new Error("Você não pode instanciar uma classe abstrata.")
+        }
+        this._saldo = saldoInicial;
+        this._cliente = cliente;
+        this._agencia = agencia;
     }
 
     // PRIVATE METHODS
-    set Cliente(cliente) {
-        
-        if(cliente instanceof Cliente) {
+
+    set cliente(cliente) {
+
+        if (cliente instanceof Cliente) {
             this._cliente = cliente
         }
     }
 
-    get Cliente() {
+    get cliente() {
         return this._cliente
     }
 
@@ -30,7 +30,7 @@ export class Conta {
     // PUBLIC METHODS 
 
     depositar(valor) {
-        if(valor > 0) {
+        if (valor > 0) {
             this._saldo += valor
             return `Valor depositado. Novo Saldo: ${this._saldo}`
         } else {
@@ -39,11 +39,17 @@ export class Conta {
     }
 
     sacar(valor) {
-        if(this._saldo >= valor ) {
-            this._saldo -= valor
-            return `Saque realizado! Novo Saldo: ${this._saldo}` 
+       let taxa = 1
+       return this._sacar(taxa, valor)
+    }
+
+    _sacar(taxa, valor) {
+        const  valorSaque = valor * taxa
+        if (this._saldo >= valorSaque) {
+            this._saldo -= valorSaque
+            return `Saque realizado! Novo Saldo: ${this._saldo}`
         } else {
-            return `Saldo insuficiente.` 
+            return `Saldo insuficiente.`
         }
     }
 
