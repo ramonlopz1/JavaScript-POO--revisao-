@@ -13,12 +13,12 @@ export class ContaPoupanca extends Conta {
     }
 
     get id() {
-        return ContaPoupanca.id
+        return ContaPoupanca.id;
     }
 
     //OVERRIDE
     sacar(valor) {
-        let taxa = 1.1
+        const taxa = 1.02;
         return super._sacar(valor, taxa)
     }
 }

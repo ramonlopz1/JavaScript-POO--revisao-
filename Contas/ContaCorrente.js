@@ -8,11 +8,18 @@ export class ContaCorrente extends Conta {
 
     // CONSTRUCTOR  METHOD
     constructor(saldo, cliente, agencia) {
-        super(saldo, cliente, agencia)
+        super(saldo, cliente, agencia);
         ContaCorrente.id++;
     }
 
     get id() {
-        return ContaCorrente.id
+        return ContaCorrente.id;
+    }
+
+
+    // IMPLEMENTED ABSTRACT METHOD
+    sacar(valor) {
+        const taxa = 1;
+        return this._sacar(taxa, valor);
     }
 }

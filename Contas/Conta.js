@@ -1,8 +1,11 @@
+/**Lembrando...
+     * Como o JS é sempre interpretado, os erros só vão surgir quando o programa for executado. Diferente das linguagens com compilador, ex: Java, C#...
+     */
 // SERÁ UMA CLASSE ABSTRATA, NÃO PODERÁ SER INSTANCIADA, APENAS HERDADA.
 export class Conta {
     // CONSTRUCTOR  METHOD
     constructor(saldoInicial, cliente, agencia) {
-        if(this.constructor == Conta) {
+        if (this.constructor == Conta) {
             throw new Error("Você não pode instanciar uma classe abstrata.")
         }
         this._saldo = saldoInicial;
@@ -38,9 +41,9 @@ export class Conta {
         }
     }
 
+    // ABSTRACT METHODS: HAVE TO BE IMPLEMENTED 
     sacar(valor) {
-       let taxa = 1
-       return this._sacar(taxa, valor)
+        throw new Error ("Método abstrato. Implementação obrigatória.")
     }
 
     _sacar(taxa, valor) {
